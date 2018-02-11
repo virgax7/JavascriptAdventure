@@ -13,8 +13,8 @@
 <script>
     function getFormValues() {
         // was confused for a while why it wasn't working, until I realized it was getElementsByName not getElementByName...
-        var firstName = document.getElementsByName("fname")[0].value;
-        var lastName = document.getElementsByName("lname")[0].value;
+        const firstName = document.getElementsByName("fname")[0].value;
+        const lastName = document.getElementsByName("lname")[0].value;
         alert("you have submitted the form " + firstName + " " + lastName);
     }
 </script>
