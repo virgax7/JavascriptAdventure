@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset=utf-8/>
+    <title>Create a table</title>
+    <style type="text/css">
+        body {
+            margin: 30px;
+        }
+    </style>
+</head>
+<body>
+<table id="myTable" border="1">
+</table>
+<form>
+    <input type="button" onclick="createTable()" value="Create the table">
+</form>
+<script>
+    // Write a JavaScript function that creates a table, accept row, column numbers from the user,
+    // and input row-column number as content (e.g. Row-0 Column-0) of a cell.
+    function createTable() {
+        const rowNum = prompt("Enter the number of rows you want: 1 through 10000");
+        if (rowNum <= 0 || rowNum > 10000) {
+            alert("invalid number of rows");
+            return;
+        }
+        const colNum = prompt("Enter the number of columns you want: 1 through 10000");
+        if (colNum <= 0 || colNum > 10000) {
+            alert("invalid number of columns");
+            return;
+        }
+        const myTable = document.getElementById("myTable");
+        for (var i = 0; i < rowNum; i++) {
+            myTable.insertRow();
+            for (var j = 0; j < colNum; j++) {
+                const cell = myTable.rows[i].insertCell(j);
+                cell.innerHTML = "Row-" + (i + 1) + " Column-" + (j + 1);
+            }
+        }
+    }
+</script>
+</body>
+</html>
