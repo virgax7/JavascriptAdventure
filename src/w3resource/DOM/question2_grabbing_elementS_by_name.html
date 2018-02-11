@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset=utf-8/>
+    <title>Return first and last name from a form - w3resource</title>
+</head>
+<body>
+<form id="form1" onsubmit="getFormValues()">
+    First name: <input type="text" name="fname" value="David"><br>
+    Last name: <input type="text" name="lname" value="Beckham"><br>
+    <input type="submit" value="Submit">
+</form>
+<script>
+    function getFormValues() {
+        // was confused for a while why it wasn't working, until I realized it was getElementsByName not getElementByName...
+        var firstName = document.getElementsByName("fname")[0].value;
+        var lastName = document.getElementsByName("lname")[0].value;
+        alert("you have submitted the form " + firstName + " " + lastName);
+    }
+</script>
+</body>
+</html>
