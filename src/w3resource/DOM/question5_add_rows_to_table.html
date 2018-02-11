@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset=utf-8/>
+    <title>Insert row in a table - w3resource</title>
+</head>
+<body>
+<table id="sampleTable" border="1">
+    <tr>
+        <td>Row1 cell1</td>
+        <td>Row1 cell2</td>
+    </tr>
+    <tr>
+        <td>Row2 cell1</td>
+        <td>Row2 cell2</td>
+    </tr>
+</table>
+<br>
+<input type="button" onclick="insert_Row()" value="Insert row">
+<script>
+    const sampleTable = document.getElementById("sampleTable");
+    var row3 = sampleTable.insertRow(2);
+    var row3Cell1 = row3.insertCell(0);
+    var row3Cell2 = row3.insertCell(1);
+
+
+    var row4 = sampleTable.insertRow(3);
+    var row4Cell1 = row4.insertCell(0);
+    var row4Cell2 = row4.insertCell(1);
+
+    row3Cell1.innerHTML = "Row3 cell1";
+    row3Cell2.innerHTML = "Row3 cell2";
+
+    row4Cell1.innerHTML = "Row4 cell1";
+    row4Cell2.innerHTML = "Row4 cell2";
+</script>
+</body>
+</html>
