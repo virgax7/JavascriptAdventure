@@ -1,0 +1,1 @@
+This directory is solving problems under https://www.w3resource.com/javascript-exercises/javascript-dom-exercises.php
