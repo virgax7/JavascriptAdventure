@@ -1,0 +1,1 @@
+this package has things to do with working with the DOM using javascript

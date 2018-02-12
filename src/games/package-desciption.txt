@@ -1,0 +1,1 @@
+this package has mini games and such using javascript html and css
