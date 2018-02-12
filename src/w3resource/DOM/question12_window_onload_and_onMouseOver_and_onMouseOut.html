@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Get And Style All Tags</title>
+    <script>
+        // this is still valid even though the script is in head tag because onload is
+        // called after the DOM is loaded
+        var strongs;
+        window.onload = changeStrongs;
+
+        function changeStrongs() {
+            alert("Called Next");
+            strongs = document.getElementsByTagName('strong');
+            strongs[0].innerHTML = "CHANGE1";
+            strongs[1].innerHTML = "CHANGE2";
+        }
+
+        function highlight() {
+            for (var i = 0; i < strongs.length; i++) {
+                strongs[i].style.color = "purple";
+            }
+        }
+
+        function returnNormal() {
+            for (var i = 0; i < strongs.length; i++) {
+                strongs[i].style.color = "black";
+            }
+        }
+
+        alert("Called First");
+    </script>
+</head>
+<body>
+<p>
+    <a href="#" onMouseOver="highlight()" onMouseOut="returnNormal()">On mouse over here bold words of the following paragraph will be highlighted</a>
+</p>
+<p>
+    <strong>We</strong> have just started <strong>this</strong> section for the users (<strong>beginner</strong> to
+    intermediate) who <strong>want</strong> to work with <strong>various</strong> JavaScript <strong>problems</strong>
+    and write scripts online to <strong>test</strong> their JavaScript <strong>skill</strong>.
+</p>
+</body>
+</html>
