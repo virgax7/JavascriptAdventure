@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!--having meta charset="UTF-8" ensures d3 compatibility -->
+    <meta charset="UTF-8">
+    <title>Sample D3 test</title>
+    <script type="text/javascript" src="d3.js"></script>
+</head>
+<body>
+<p id="pElement">
+    Some P element
+</p>
+<div>
+    div 1
+</div>
+<div>
+    div 2
+</div>
+<script>
+    d3.select("p#pElement").text("Modified P Element");
+    d3.selectAll("div").text("both div selected");
+</script>
+</body>
+</html>
