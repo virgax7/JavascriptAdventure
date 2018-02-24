@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div>div 1</div>
+    <div>div 2</div>
+    <div>div 3</div>
+</body>
+<script>
+    let allDivs = document.getElementsByTagName("div");
+    for (let div in allDivs) {
+        console.log(div);
+    }
+    /*
+    this will print
+    0
+    1
+    2
+    length
+    item
+    namedItem
+     */
+    // the 0,1 and 2 makes sense, but where is length, item and namedItem coming from?
+    // They are coming from the NamedNodeMap and unless that's what you want(not just the divs)
+    // then fine, but just be aware
+</script>
+</html>
