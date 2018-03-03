@@ -73,11 +73,11 @@ function AnotherProto() {
     return new Number(5);
 }
 
-let x = new AnotherProto();
-let y = Object.create(AnotherProto.prototype);
+let i = new AnotherProto();
+let j = Object.create(AnotherProto.prototype);
 
-console.log(x); // [Number: 5]
-console.log(y); // AnotherProto {}
+console.log(i); // [Number: 5]
+console.log(j); // AnotherProto {}
 
 // the difference here is just that Object.create returns that
 // resultingObject as demonstrated from Object.myCreate
@@ -105,3 +105,29 @@ console.log(a); // LastProto { age: 'over 9000' }
 console.log(b); // LastProto
 
 
+// let's just add one more demonstration of when you would use prototypical inheritance(create objects straight from objects)
+// without any pseudo-abstractions such as classes(functions under the hood)
+// this is very similar to Java's inheritance where you inherit the
+// fields and methods directly from your parent, although in this case
+// instead of classes, we have real objects...
+
+let x = {
+    name : "lowercase x",
+    x() {
+        console.log("Hi, I'm from " + this.name);
+    }
+};
+
+let y = Object.create(x);
+y.y = function() {
+    console.log("Hi, I'm from y");
+};
+
+let z = Object.create(y);
+z.x();
+z.y();
+// oh and by the way, since this is bound to z, if I change name in z,
+// kind of like in the dynamic dispatcher in java, this.name in function x of object x,
+// will be z.name
+z.name = "z";
+z.x();
