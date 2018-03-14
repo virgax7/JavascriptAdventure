@@ -1,5 +1,5 @@
-// in javascript, things run to completion and events placed on the queue cannot interrupt until everything in
-// the main thread runs to completion
+// in javascript(runtime), things run to completion and events placed on the queue cannot interrupt until everything in
+// the main thread(the thing running by javascript runtime) runs to completion
 
 setTimeout(() => console.log("last"), 0);
 function sleep(millis) {

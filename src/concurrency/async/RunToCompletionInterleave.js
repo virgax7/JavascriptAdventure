@@ -1,4 +1,4 @@
-// things outside of the main thread can interleave
+// things outside of the main thread(the thing running by javascript runtime) can interleave
 function sleep(millis) {
     const timeToSleep = Date.now() + millis;
     while (Date.now() < timeToSleep) ;
