@@ -28,7 +28,7 @@ function PersonClassUnderTheHood(name) {
 
 PersonClassUnderTheHood.prototype.sleep = function () {
     console.log("zzZ");
-}
+};
 
 let personFromClassUnderTheHood = new PersonClassUnderTheHood("luna");
 console.log(personFromClassUnderTheHood); // PersonClassUnderTheHood { name: 'luna' }
@@ -49,4 +49,70 @@ let b = Object.create(LastProto.prototype);
 
 console.log(a); // LastProto { age: 'over 9000' }
 console.log(b); // LastProto {}
+
+// lets get on with class extends
+
+class Bar {
+    constructor(name) {
+        this.name = name + " from bar";
+    }
+
+    speak() {
+        console.log("I am bar");
+        console.log("I am " + this.name + " from bar");
+    }
+
+    barFunc() {
+        console.log("printing name : " + this.name);
+    }
+}
+
+class Foo extends Bar {
+    constructor(name) {
+        super(name);
+        this.name = name + " from foo";
+    }
+
+    speak() {
+        console.log("I am foo");
+        console.log("I am " + this.name + " from foo");
+    }
+
+    fooFunc() {}
+}
+
+console.log(Foo.prototype.__proto__.speak); // [Function: speak]
+console.log(Foo.prototype.__proto__.barFunc); // [Function: barFunc]
+
+let foo = new Foo("foo"); // I am foo
+foo.speak(); // I am foo from foo from foo
+
+// the below is pretty interesting... this is because foo.__proto__ is just the class Foo's prototype with this.name not assigned to anything
+foo.__proto__.speak(); // I am undefined from foo
+console.log(foo.__proto__ == Foo.prototype); // true
+
+// the below is interesting too.. it will print foo from foo because this.name is name + " from foo" because it overrode name + " from bar"
+foo.barFunc(); // printing name : foo from foo
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
