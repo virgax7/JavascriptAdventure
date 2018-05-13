@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sticky Notes</title>
+    <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+    <style>
+        html, body {
+            width: 100%;
+            height: 100%;
+        }
+
+        #container {
+            width: 100%;
+            height: 100%;
+        }
+
+        #mainDiv {
+            width: 100%;
+            height: 100%;
+            display: grid;
+            grid-template-columns: repeat(7, minmax(10em, max-content));
+            grid-template-rows: repeat(5, minmax(10em, max-content));
+            grid-gap: 1em;
+        }
+    </style>
+</head>
+<body>
+<div id="container"></div>
+<script type="text/babel">
+    class Note extends React.Component {
+        render() {
+            const noteStyle = {
+                width: '100%',
+                height: '100%',
+                backgroundColor: "#FFF",
+                boxShadow: "0px 0px 5px #567",
+                display: 'grid',
+                gridTemplateRows: '3fr 1fr'
+            };
+
+            return (
+                <div style={noteStyle}>
+                    {this.getSquareComponent(this.props.bgColor)}
+                    {this.getTextComponent(this.props.bgColor)}
+                </div>
+            );
+        }
+
+        getSquareComponent(color) {
+           const squareStyle = {
+               width: '100%',
+               height: '100%',
+               backgroundColor: color
+            };
+
+            return <div style={squareStyle} />;
+
+        }
+
+        getTextComponent(name) {
+            const textStyle = {
+                fontFamily: "sans-serif",
+                fontWeight: "bold"
+            };
+
+            return (
+                <p style={textStyle}>
+                    {name}
+                </p>
+            );
+        }
+    }
+
+
+    const getThirtyFiveNotes = () => {
+        const randomNum = () => Math.floor(Math.random() * 9);
+        return Array.from(
+            {length: 35},
+            () => <Note bgColor={"#FFA" + randomNum() + randomNum() + randomNum()}/>
+        );
+    };
+
+    ReactDOM.render(
+        (
+            <div id="mainDiv">
+                {getThirtyFiveNotes()}
+            </div>
+        ), document.querySelector("#container")
+    );
+</script>
+</body>
+</html>
