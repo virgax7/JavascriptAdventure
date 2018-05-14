@@ -76,11 +76,12 @@
     }
 
 
+    let id = 0;
     const getThirtyFiveNotes = () => {
         const randomNum = () => Math.floor(Math.random() * 9);
         return Array.from(
             {length: 35},
-            () => <Note bgColor={"#FFA" + randomNum() + randomNum() + randomNum()}/>
+            () => <Note key={id++} bgColor={"#FFA" + randomNum() + randomNum() + randomNum()}/>
         );
     };
 
