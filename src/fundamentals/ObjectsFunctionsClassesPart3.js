@@ -50,7 +50,7 @@ bar.sleep(); // this will print
 class Foo {
     constructor(name) {
         this.name = name;
-        this.hmm(); // throws exception because hmm is not binded
+        this.hmm();
     }
 
    hmm() {
