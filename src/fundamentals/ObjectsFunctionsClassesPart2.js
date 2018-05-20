@@ -21,7 +21,7 @@ personFromClass.sleep(); // zzZ
 
 // yes the constructor is just the function Person(name) itself
 
-// under the hood the above is is really just
+// under the hood the above is similar to
 function PersonClassUnderTheHood(name) {
    this.name = name;
 }
@@ -95,7 +95,9 @@ console.log(foo.__proto__ == Foo.prototype); // true
 foo.barFunc(); // printing name : foo from foo
 
 
-
+console.log(foo.__proto__.speak == foo.speak); // true
+console.log(foo.__proto__.__proto__.speak == foo.speak); // false, because it belongs to Bar's speak function
+console.log(foo.__proto__.__proto__.speak); // [Function : speak]
 
 
 
