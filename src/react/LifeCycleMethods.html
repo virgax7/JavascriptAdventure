@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>LifeCycle</title>
+    <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+    <style>
+    </style>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel">
+    class Counter extends React.Component {
+        constructor(props, context) {
+            super(props, context);
+            console.log("   Counter constructor");
+        }
+
+        componentWillUpdate(newProps, newState) {
+            console.log("	Counter: componentWillUpdate: Component is going to update!");
+        }
+
+        componentDidUpdate(currentProps, currentState) {
+            console.log("	Counter: componentDidUpdate: Component updated");
+        }
+
+        componentWillMount() {
+            console.log("	Counter: componentWillMount: Component mounted!");
+        }
+
+        componentWillUnmount() {
+            console.log("	Counter: componentWillUnmount: Component is going to be unmounted");
+        }
+
+        shouldComponentUpdate(newProps, newState) {
+            console.log("	Counter: shouldComponentUpdate: No");
+            return false;
+        }
+
+        componentDidMount() {
+            console.log("   Counter: componentDidMount: Component mounted");
+        }
+
+        componentWillReceiveProps(newProp) {
+            console.log("   Counter: componentWillReceiveProps: newProp.display is " + newProp.display);
+        }
+
+        render() {
+            console.log("   Counter: render");
+            return (
+                <div>
+                    {this.props.display}
+                </div>
+            );
+        }
+    }
+
+    class CounterParent extends React.Component {
+        constructor(props, context) {
+            super(props, context);
+            console.log("constructor: ");
+            this.state = {
+                count: 0
+            };
+            this.increase = this.increase.bind(this);
+        }
+
+        increase() {
+            this.setState({
+                count: this.state.count + 1
+            });
+        }
+
+        componentWillReceiveProps(newProp) {
+            console.log("componentWillReceiveProps: newProp is " + newProp);
+        }
+
+        componentWillUpdate(newProps, newState) {
+            console.log("componentWillUpdate: Component is going to update!");
+        }
+
+        componentDidUpdate(currentProps, currentState) {
+            console.log(this.props);
+            console.log("componentDidUpdate: Component updated");
+        }
+
+        componentWillMount() {
+            console.log("componentWillMount: Component mounted!");
+        }
+
+        componentWillUnmount() {
+            console.log("componentWillUnmount: Component is about to be removed from the DOM!!");
+        }
+
+        componentDidMount() {
+            console.log("componentDidMount: Component mounted");
+        }
+
+        shouldComponentUpdate(newProps, newState) {
+            console.log("shouldComponentUpdate: ?");
+
+            if (newState.count < 3) {
+                console.log("shouldComponentUpdate: yes");
+                return true;
+            } else {
+                ReactDOM.unmountComponentAtNode(document.querySelector("#root"));
+                console.log("shouldComponentUpdate: no");
+                return false;
+            }
+        }
+
+        render() {
+            console.log("render");
+            return (
+                <div >
+                    <Counter display={this.state.count}/>
+                    <button onClick={this.increase}>
+                        +
+                    </button>
+                </div>
+            );
+        }
+    }
+
+
+    // has to come before ReactDOM.render
+    CounterParent.defaultProps = {
+        name: "huh"
+    };
+    console.log("defaultProps! " + CounterParent.defaultProps);
+    ReactDOM.render(
+        <div>
+            <CounterParent/>
+        </div>,
+        document.querySelector("#root")
+    );
+    console.log("final");
+
+</script>
+</body>
+</html>
