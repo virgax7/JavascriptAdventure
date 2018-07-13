@@ -18,3 +18,11 @@ promise.then(num => {
 });
 
 
+First
+MIDDLE
+HI
+7
+bye
+=> Promise {}
+5 will
+not get printed
